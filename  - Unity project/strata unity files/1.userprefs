@@ -1,0 +1,16 @@
+﻿<Properties StartupItem="Assembly-CSharp.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ClothDisplacementLowpass.cs">
+    <Files>
+      <File FileName="Assets\Scripts\HeadVelocitySurfacing.cs" Line="6" Column="47" />
+      <File FileName="Assets\Scripts\ClothDisplacementSurfacing.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\WallDisplacementSurfacing.cs" Line="1" Column="1" />
+      <File FileName="Assets\ResetTimer.cs" Line="22" Column="39" />
+      <File FileName="Assets\Scripts\ClothDisplacementLowpass.cs" Line="10" Column="34" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
