@@ -6,7 +6,5 @@ All music composed by myself, OPTIA [ www.soundcloud.com/optia ]
 
 Requires Leap Motion
 
-Currently, intro scene is only available on Vive
-
 
 Poke the cube to begin, and explore! And listen!
