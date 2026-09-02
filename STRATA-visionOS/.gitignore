@@ -1,0 +1,6 @@
+xcuserdata/
+*.xcuserstate
+DerivedData/
+.DS_Store
+# Large stems are imported locally by Scripts/import-audio.sh
+STRATA/Resources/Audio/*.m4a
