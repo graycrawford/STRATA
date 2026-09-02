@@ -45,6 +45,7 @@ final class StemEngine {
     private let strataReverb = AVAudioUnitReverb()
     private let strataLowpass = AVAudioUnitEQ(numberOfBands: 1)
     private let clothsBus = AVAudioMixerNode()
+    private let echoSend = AVAudioMixerNode()
     private let clothEcho = AVAudioUnitDelay()
     private let echoReturn = AVAudioMixerNode()
 
@@ -67,7 +68,7 @@ final class StemEngine {
 
     private func buildGraph() {
         for node in [master, masterLowpass, masterReverb, backgroundBus, strataBus, strataReverb,
-                     strataLowpass, clothsBus, clothEcho, echoReturn] as [AVAudioNode] {
+                     strataLowpass, clothsBus, echoSend, clothEcho, echoReturn] as [AVAudioNode] {
             engine.attach(node)
         }
 
@@ -104,6 +105,7 @@ final class StemEngine {
         engine.connect(strataReverb, to: strataLowpass, format: busFormat)
         engine.connect(strataLowpass, to: master, format: busFormat)
         engine.connect(clothsBus, to: master, format: busFormat)
+        engine.connect(echoSend, to: clothEcho, format: busFormat)
         engine.connect(clothEcho, to: echoReturn, format: busFormat)
         engine.connect(echoReturn, to: master, format: busFormat)
 
@@ -137,7 +139,7 @@ final class StemEngine {
         engine.connect(stem.player, to: stem.varispeed, format: file.processingFormat)
         engine.connect(stem.varispeed, to: stem.gain, format: file.processingFormat)
 
-        let target: AVAudioNode
+        let target: AVAudioMixerNode
         switch bus {
         case .strata: target = strataBus
         case .cloths: target = clothsBus
@@ -146,7 +148,7 @@ final class StemEngine {
         if echoSend {
             let points = [
                 AVAudioConnectionPoint(node: target, bus: target.nextAvailableInputBus),
-                AVAudioConnectionPoint(node: clothEcho, bus: clothEcho.nextAvailableInputBus),
+                AVAudioConnectionPoint(node: self.echoSend, bus: self.echoSend.nextAvailableInputBus),
             ]
             engine.connect(stem.gain, to: points, fromBus: 0, format: busFormat)
         } else {

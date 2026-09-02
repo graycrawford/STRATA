@@ -173,8 +173,7 @@ final class StrataWorld {
         setShrink(1)
         strata.root.scale = SIMD3(repeating: 0.05)
         contentRoot.addChild(strata.root)
-        strata.root.move(to: Transform(scale: .one, rotation: simd_quatf(), translation: .zero),
-                         relativeTo: contentRoot, duration: 1.6, timingFunction: .easeOut)
+        strata.root.move(to: .identity, relativeTo: contentRoot, duration: 1.6, timingFunction: .easeOut)
         strata.start(audio: audio)
         appModel.phaseDescription = "STRATA"
     }
